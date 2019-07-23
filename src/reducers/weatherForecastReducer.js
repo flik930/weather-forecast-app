@@ -5,6 +5,10 @@ const weatherForecast = (state = {}, action) => {
         ...state,
         forecastData: action.payload.data
       }
+    default:
+      return {
+        ...state
+      }
   }
 }
 
