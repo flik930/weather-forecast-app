@@ -1,18 +1,18 @@
 
 
-const fiveDaysWeatherForecast = {
+const weatherForecast = {
   request: (location) => ({
-    type: 'FIVE_DAYS_WEATHER_FORECAST_REQUEST',
+    type: 'WEATHER_FORECAST_REQUEST',
     location
   }),
   succeed: (data) => ({
-    type: 'FIVE_DAYS_WEATHER_FORECAST_SUCCEED',
+    type: 'WEATHER_FORECAST_SUCCEED',
     data
   }),
   failed: (data) => ({
-    type: 'FIVE_DAYS_WEATHER_FORECAST_FAILED',
+    type: 'WEATHER_FORECAST_FAILED',
     data
   })
 };
 
-export default fiveDaysWeatherForecast;
+export default weatherForecast;

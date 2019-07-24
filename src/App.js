@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { useDispatch } from 'react-redux'
-import fiveDaysWeatherForecast from './actionCreators/weatherForecastActionCreator';
+import weatherForecast from './actionCreators/weatherForecastActionCreator';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -16,7 +16,7 @@ function App() {
   const [location, setLocation] = useState('');
 
   useEffect(() => {
-    dispatch(fiveDaysWeatherForecast.request('London'));
+    dispatch(weatherForecast.request('London'));
   }, []);
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ function App() {
   }
 
   const handleSearchClick = () => {
-    dispatch(fiveDaysWeatherForecast.request(location))
+    dispatch(weatherForecast.request(location))
   }
 
   return (

@@ -1,19 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { getFiveDaysForecast } from '../services/weatherForecastService'
-import fiveDaysWeatherForecast from '../actionCreators/weatherForecastActionCreator';
+import { getWeatherForecast } from '../services/weatherForecastService'
+import weatherForecast from '../actionCreators/weatherForecastActionCreator';
 
-function* fetchFiveDaysWeatherForecast(action) {
+function* fetchWeatherForecast(action) {
   try {
-     const response = yield call(getFiveDaysForecast, action.location);
-     yield put(fiveDaysWeatherForecast.succeed(response.data));
+     const response = yield call(getWeatherForecast, action.location);
+     yield put(weatherForecast.succeed(response.data));
   } catch (e) {
     console.log(e);
-    yield put(fiveDaysWeatherForecast.failed(e));
+    yield put(weatherForecast.failed(e));
   }
 }
 
 function* weatherForecastSaga() {
-  yield takeLatest("FIVE_DAYS_WEATHER_FORECAST_REQUEST", fetchFiveDaysWeatherForecast);
+  yield takeLatest("WEATHER_FORECAST_REQUEST", fetchWeatherForecast);
 }
 
 export default weatherForecastSaga;
