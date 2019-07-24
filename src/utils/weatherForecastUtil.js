@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const findMajorityConditions = (array) => {
   if(array.length === 0)
     return null;
@@ -27,20 +29,56 @@ const findMeanOfWindSpeed = (array) => {
   return total / array.length;
 }
 
-export const getDailyForecast = (items) => {
-  let minTemp = null;
-  let maxTemp = null;
-  let condition = null;
-  let wind = null;
-  items.forEach(item => {
-    if (!maxTemp || item.main.temp_max > maxTemp) {
-      maxTemp = item.main.temp_max;
-    }
+const findMinTemp = (array) => {
+  let minTemp;
+  array.forEach(item => {
     if (!minTemp || item.main.temp_min < minTemp) {
       minTemp = item.main.temp_min;
     }
   })
-  condition = findMajorityConditions(items);
-  wind = findMeanOfWindSpeed(items);
+  return minTemp;
+}
+
+const findMaxTemp = (array) => {
+  let maxTemp;
+  array.forEach(item => {
+    if (!maxTemp || item.main.temp_max < maxTemp) {
+      maxTemp = item.main.temp_max;
+    }
+  })
+  return maxTemp;
+}
+
+const getDailyForecast = (items) => {
+  let minTemp = findMinTemp(items);
+  let maxTemp = findMaxTemp(items);
+  let condition = findMajorityConditions(items);
+  let wind = findMeanOfWindSpeed(items);
   return {minTemp, maxTemp, condition, wind}
+}
+
+export const processForecastData = (data) => {
+  const tzOffset = data.city.timezone / 60;
+  const dailyForecast = []
+  //re-structure forcast data by day
+  for(let i = 0; i <= 5; i++) {
+    let start = moment().utcOffset(tzOffset).startOf('day').add(i, 'days').valueOf() / 1000
+    let end = moment().utcOffset(tzOffset).startOf('day').add(i + 1, 'days').valueOf() / 1000
+    dailyForecast[i] = {
+      dt: start,
+      details: [],
+      dailyInfo: {}
+    };
+    data.list.forEach((item) => {
+      if (item.dt > start && item.dt < end){
+        dailyForecast[i]['details'].push(item)
+      }
+    })
+  }
+
+  dailyForecast.forEach(day => {
+    day.dailyInfo = getDailyForecast(day.details);
+  });
+
+  return dailyForecast;
 }
