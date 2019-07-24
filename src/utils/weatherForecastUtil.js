@@ -66,6 +66,7 @@ export const processForecastData = (data) => {
     let end = moment().utcOffset(tzOffset).startOf('day').add(i + 1, 'days').valueOf() / 1000
     dailyForecast[i] = {
       dt: start,
+      displayDate: moment(start * 1000).utcOffset(tzOffset).format('dddd D/M'),
       details: [],
       dailyInfo: {}
     };

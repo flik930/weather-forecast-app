@@ -5,7 +5,7 @@ const ForecastInfoItem = (props) => {
   const { info } = props;
   return (
     <Grid item>
-      {info.dt}
+      {info.displayDate}
     </Grid>
   )
 }
