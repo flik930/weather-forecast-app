@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import weatherForecast from './actionCreators/weatherForecastActionCreator';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -14,6 +12,8 @@ function App() {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState('');
+
+  const dailyForecast = useSelector(state => state.dailyForecast);
 
   useEffect(() => {
     dispatch(weatherForecast.request('London'));
@@ -57,11 +57,17 @@ function App() {
           </Grid>
         </Grid>
 
-        <Card>
-          <CardContent>
-
-          </CardContent>
-        </Card>
+        <Grid container spacing={1} direction="row"
+          justify="center"
+          alignItems="center">
+          {
+            dailyForecast && dailyForecast.map((day, index) => (
+              <Grid item key={index}>
+                {day.dt}
+              </Grid>
+            ))
+          }
+        </Grid>
       </Container>
     </div>
   );
