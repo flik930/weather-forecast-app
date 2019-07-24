@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import ForcastInfoItem from './components/ForecastInfoItem';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,9 +63,7 @@ function App() {
           alignItems="center">
           {
             dailyForecast && dailyForecast.map((day, index) => (
-              <Grid item key={index}>
-                {day.dt}
-              </Grid>
+              <ForcastInfoItem key={index} info={day}/>
             ))
           }
         </Grid>
