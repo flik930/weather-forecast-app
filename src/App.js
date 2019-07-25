@@ -39,7 +39,7 @@ function App() {
           container
           spacing={2}
           direction="row"
-          justify="flex-start"
+          justify="center"
           alignItems="center"
         >
           <Grid item>

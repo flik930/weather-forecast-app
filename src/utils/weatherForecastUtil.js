@@ -14,7 +14,7 @@ const findMajorityConditions = (array) => {
           modeMap[el.weather[0].main]++;  
       if(modeMap[el.weather[0].main] > maxCount)
       {
-          maxEl = el.weather;
+          maxEl = el.weather[0];
           maxCount = modeMap[el.weather[0].main];
       }
   }
@@ -26,7 +26,7 @@ const findMeanOfWindSpeed = (array) => {
   for (i = 0; i < array.length; i += 1) {
       total += array[i].wind.speed;
   }
-  return total / array.length;
+  return (total / array.length).toFixed(2);
 }
 
 const findMinTemp = (array) => {
@@ -80,6 +80,10 @@ export const processForecastData = (data) => {
   dailyForecast.forEach(day => {
     day.dailyInfo = getDailyForecast(day.details);
   });
+
+  if (dailyForecast.length > 5) {
+    dailyForecast.pop();
+  }
 
   return dailyForecast;
 }
