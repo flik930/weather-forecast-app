@@ -18,6 +18,7 @@ function App() {
 
   const dailyForecast = useSelector(state => state.dailyForecast);
   const city = useSelector(state => state.city);
+  const error = useSelector(state => state.error);
 
   useEffect(() => {
     dispatch(weatherForecast.request('London'));
@@ -68,6 +69,12 @@ function App() {
               Search
             </Button>
           </Grid>
+          {
+            error &&
+            <Grid item>
+              <span style={{color: 'red'}}>{error}</span>
+            </Grid>
+          }
         </Grid>
 
         <Grid container spacing={1} direction="row"

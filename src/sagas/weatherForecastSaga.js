@@ -7,8 +7,7 @@ function* fetchWeatherForecast(action) {
      const response = yield call(getWeatherForecast, action.location);
      yield put(weatherForecast.succeed(response.data));
   } catch (e) {
-    console.log(e);
-    yield put(weatherForecast.failed(e));
+    yield put(weatherForecast.failed(e.response.data));
   }
 }
 

@@ -7,8 +7,15 @@ const weatherForecast = (state = {}, action) => {
       return {
         ...state,
         dailyForecast,
-        city
+        city,
+        error: null
       }
+    case 'WEATHER_FORECAST_FAILED':
+        return {
+          ...state,
+          dailyForecast: null,
+          error: action.data.message
+        }
     default:
       return {
         ...state
