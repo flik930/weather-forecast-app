@@ -6,13 +6,13 @@ import weatherForecastSaga from './sagas/weatherForecastSaga';
 
 const initialState = {}
 const sagaMiddleware = createSagaMiddleware()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   weatherForecast,
   initialState,
-  compose(
-    applyMiddleware(sagaMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(
+    applyMiddleware(sagaMiddleware)
   )
 );
 
