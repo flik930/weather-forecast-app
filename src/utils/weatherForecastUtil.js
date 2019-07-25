@@ -4,7 +4,7 @@ const findMajorityConditions = (array) => {
   if(array.length === 0)
     return null;
   var modeMap = {};
-  var maxEl = array[0], maxCount = 1;
+  var maxEl = array[0].weather[0], maxCount = 1;
   for(var i = 0; i < array.length; i++)
   {
       var el = array[i];
