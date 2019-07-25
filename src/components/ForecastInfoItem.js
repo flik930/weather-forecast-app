@@ -22,15 +22,15 @@ const ForecastInfoItem = (props) => {
 
   return (
     <Grid item style={gridStyle} onClick={props.onClick}>
-      <Paper style={{padding: '20px'}}>
+      <Paper style={{padding: '10px'}}>
         <Typography variant="h6">
           {props.title}
         </Typography>
-        <List>
+        <List dense={true}>
           <ListItem>
             <ListItemText primary={'Min Temp'} secondary={`${minTemp}°C / ${minTempF}°F`}/>
           </ListItem>
-          <Divider component="li" style={{height: '2px'}}/>
+          <Divider component="li"/>
           <ListItem>
             <ListItemText primary={'Mix Temp'} secondary={`${maxTemp}°C / ${maxTempF}°F`}/>
           </ListItem>
