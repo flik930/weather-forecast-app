@@ -11,31 +11,36 @@ const toFahrenheit = (c) => {
   return (c * 9 / 5) + 32;
 }
 
+const gridStyle = {
+  cursor: 'pointer'
+}
+
 const ForecastInfoItem = (props) => {
-  const { info } = props;
-  const minTempF = toFahrenheit(info.dailyInfo.minTemp).toFixed(2);
-  const maxTempF = toFahrenheit(info.dailyInfo.maxTemp).toFixed(2);
+  const { minTemp, maxTemp, wind, condition } = props;
+  const minTempF = toFahrenheit(minTemp).toFixed(2);
+  const maxTempF = toFahrenheit(maxTemp).toFixed(2);
+
   return (
-    <Grid item>
+    <Grid item style={gridStyle} onClick={props.onClick}>
       <Paper style={{padding: '20px'}}>
         <Typography variant="h6">
-          {info.displayDate}
+          {props.title}
         </Typography>
         <List>
           <ListItem>
-            <ListItemText primary={'Min Temp'} secondary={`${info.dailyInfo.minTemp}°C / ${minTempF}°F`}/>
+            <ListItemText primary={'Min Temp'} secondary={`${minTemp}°C / ${minTempF}°F`}/>
           </ListItem>
           <Divider component="li" style={{height: '2px'}}/>
           <ListItem>
-            <ListItemText primary={'Mix Temp'} secondary={`${info.dailyInfo.maxTemp}°C / ${maxTempF}°F`}/>
+            <ListItemText primary={'Mix Temp'} secondary={`${maxTemp}°C / ${maxTempF}°F`}/>
           </ListItem>
           <Divider component="li"/>
           <ListItem>
-            <ListItemText primary={'Condition'} secondary={info.dailyInfo.condition.description}/>
+            <ListItemText primary={'Condition'} secondary={condition}/>
           </ListItem>
           <Divider component="li"/>
           <ListItem>
-            <ListItemText primary={'Wind'} secondary={`${info.dailyInfo.wind} meter/sec`}/>
+            <ListItemText primary={'Wind'} secondary={`${wind} meter/sec`}/>
           </ListItem>
         </List>
       </Paper>

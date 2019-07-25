@@ -7,12 +7,14 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import ForcastInfoItem from './components/ForecastInfoItem';
+import ForecastInfoItem from './components/ForecastInfoItem';
+import ForecastDrillDownModal from './components/ForecastDrillDownModal';
 
 function App() {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState('');
+  const [modalState, setModalState] = useState({open: false});
 
   const dailyForecast = useSelector(state => state.dailyForecast);
 
@@ -28,8 +30,17 @@ function App() {
     dispatch(weatherForecast.request(location))
   }
 
+  const handleForecastClick = (day) => {
+    setModalState({open: true, title: day.displayDate, data: day.details});
+  }
+
+  const handleModalClose = () => {
+    setModalState({open: false});
+  }
+
   return (
     <div className="App">
+      <ForecastDrillDownModal open={modalState.open} onClose={handleModalClose} title={modalState.title} data={modalState.data}/>
       <Container maxWidth="lg">
         <Typography variant="h3" gutterBottom>
           Simple Weather Forcast App
@@ -63,7 +74,15 @@ function App() {
           alignItems="center">
           {
             dailyForecast && dailyForecast.map((day, index) => (
-              <ForcastInfoItem key={index} info={day}/>
+              <ForecastInfoItem
+                key={index}
+                onClick={() => handleForecastClick(day)}
+                title={day.displayDate}
+                minTemp={day.dailyInfo.minTemp}
+                maxTemp={day.dailyInfo.maxTemp}
+                wind={day.dailyInfo.wind}
+                condition={day.dailyInfo.condition.description}
+              />
             ))
           }
         </Grid>
