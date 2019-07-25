@@ -40,11 +40,12 @@ const ForecastDrillDownModal = (props) => {
             props.data && props.data.map((hourlyData, index) => (
               <ForecastInfoItem 
               key={index} 
-              title={`Time ${toHour(hourlyData.dt)}`}
+              title={`${toHour(hourlyData.dt)}`}
               minTemp={hourlyData.main.temp_min}
               maxTemp={hourlyData.main.temp_max}
               wind={hourlyData.wind.speed}
               condition={hourlyData.weather[0].description}
+              drillDown={true}
               />
             ))
           }

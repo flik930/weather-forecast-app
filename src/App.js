@@ -42,9 +42,9 @@ function App() {
   return (
     <div className="App">
       <ForecastDrillDownModal open={modalState.open} onClose={handleModalClose} title={modalState.title} data={modalState.data} city={city}/>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{padding: 20}}>
         <Typography variant="h3" gutterBottom>
-          Simple Weather Forcast App
+          Weather Forcast App
         </Typography>
 
         <Grid
