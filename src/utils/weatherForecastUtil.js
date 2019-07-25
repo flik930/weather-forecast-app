@@ -85,5 +85,5 @@ export const processForecastData = (data) => {
     dailyForecast.pop();
   }
 
-  return dailyForecast;
+  return {dailyForecast, city: data.city};
 }

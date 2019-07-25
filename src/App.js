@@ -17,6 +17,7 @@ function App() {
   const [modalState, setModalState] = useState({open: false});
 
   const dailyForecast = useSelector(state => state.dailyForecast);
+  const city = useSelector(state => state.city);
 
   useEffect(() => {
     dispatch(weatherForecast.request('London'));
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <ForecastDrillDownModal open={modalState.open} onClose={handleModalClose} title={modalState.title} data={modalState.data}/>
+      <ForecastDrillDownModal open={modalState.open} onClose={handleModalClose} title={modalState.title} data={modalState.data} city={city}/>
       <Container maxWidth="lg">
         <Typography variant="h3" gutterBottom>
           Simple Weather Forcast App
