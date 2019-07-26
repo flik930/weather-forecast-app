@@ -1,5 +1,10 @@
 # Weather Forecast App
 
+This app provides the coming 5 days weather forecast, and 3 hour weather info for each day.<br>
+
+## Assumptions
+Assumming the timezone of datetime display will be base on the timezone of the city you are searching.
+
 ## To run the app in development mode
 `yarn start` Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.<br><br>
