@@ -87,6 +87,7 @@ const App = () => {
                 maxTemp={day.dailyInfo.maxTemp}
                 wind={day.dailyInfo.wind}
                 condition={day.dailyInfo.condition.description}
+                conditionIconSrc={`http://openweathermap.org/img/wn/${day.dailyInfo.condition.icon}@2x.png`}
               />
             ))
           }

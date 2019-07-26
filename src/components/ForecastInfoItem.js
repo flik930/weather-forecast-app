@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Divider from '@material-ui/core/Divider';
 import styled from 'styled-components';
 const toFahrenheit = (c) => {
@@ -12,10 +13,10 @@ const toFahrenheit = (c) => {
 }
 
 const ForecastInfoItem = (props) => {
-  const { minTemp, maxTemp, wind, condition, drillDown } = props;
+  const { minTemp, maxTemp, wind, condition, conditionIconSrc, drillDown } = props;
   const minTempF = toFahrenheit(minTemp).toFixed(2);
   const maxTempF = toFahrenheit(maxTemp).toFixed(2);
-
+console.log(conditionIconSrc)
   const gridStyle = {
     cursor: drillDown ? 'auto' : 'pointer',
   }
@@ -37,6 +38,9 @@ const ForecastInfoItem = (props) => {
           <Divider component="li"/>
           <ListItem>
             <ListItemText primary={'Condition'} secondary={condition}/>
+            <ListItemIcon>
+              <img style={{height: 50}} src={conditionIconSrc} />
+            </ListItemIcon>
           </ListItem>
           <Divider component="li"/>
           <ListItem>
@@ -51,7 +55,7 @@ const ForecastInfoItem = (props) => {
 export default ForecastInfoItem;
 
 const StyledPaper = styled(Paper)`
-  background-color: #f5f5f5 !important;
+  background-color: #fff !important;
   transition: all .2s ease-in !important;
   &:hover {
     background: #eee !important;

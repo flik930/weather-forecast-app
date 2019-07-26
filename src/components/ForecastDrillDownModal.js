@@ -45,6 +45,7 @@ const ForecastDrillDownModal = (props) => {
               maxTemp={hourlyData.main.temp_max}
               wind={hourlyData.wind.speed}
               condition={hourlyData.weather[0].description}
+              conditionIconSrc={`http://openweathermap.org/img/wn/${hourlyData.weather[0].icon}@2x.png`}
               drillDown={true}
               />
             ))
