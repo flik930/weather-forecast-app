@@ -41,7 +41,7 @@ const App = () => {
       <ForecastDrillDownModal open={modalState.open} onClose={handleModalClose} title={modalState.title} data={modalState.data} city={city}/>
       <Container maxWidth="lg" style={{padding: 20}}>
         <Typography variant="h3" gutterBottom>
-          Weather Forcast App
+          Weather Forecast App
         </Typography>
 
         <Grid

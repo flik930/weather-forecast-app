@@ -32,7 +32,7 @@ describe('app testing', () => {
     const {getByText} = render(
       <Provider store={store}><App/></Provider>,
     )
-    expect(getByText('Weather Forcast App')).toBeInTheDocument()
+    expect(getByText('Weather Forecast App')).toBeInTheDocument()
  });
 
  it('fetching data when search clicked', async () => {
