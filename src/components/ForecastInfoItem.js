@@ -32,7 +32,7 @@ const ForecastInfoItem = (props) => {
           </ListItem>
           <Divider component="li"/>
           <ListItem>
-            <ListItemText primary={'Mix Temp'} secondary={`${maxTemp}°C / ${maxTempF}°F`}/>
+            <ListItemText primary={'Max Temp'} secondary={`${maxTemp}°C / ${maxTempF}°F`}/>
           </ListItem>
           <Divider component="li"/>
           <ListItem>

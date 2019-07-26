@@ -35,18 +35,16 @@ describe('app testing', () => {
     expect(getByText('Weather Forcast App')).toBeInTheDocument()
  });
 
- it('fetching data when search clicked', () => {
-  const {getByText, getByLabelText} = render(
+ it('fetching data when search clicked', async () => {
+  const {getByText, getByLabelText, container} = render(
     <Provider store={store}><App/></Provider>,
   )
   axiosMock.get.mockResolvedValueOnce({
     data: mockData,
   })
   expect(axiosMock.get).toHaveBeenCalledTimes(0)
-
   userEvent.type(getByLabelText('Please Enter a City'), 'London');
   fireEvent.click(getByText('Search'))
-
   expect(axiosMock.get).toHaveBeenCalledTimes(1)
  })
 })
