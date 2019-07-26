@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,10 +19,6 @@ const App = () => {
   const dailyForecast = useSelector(state => state.dailyForecast);
   const city = useSelector(state => state.city);
   const error = useSelector(state => state.error);
-
-  // useEffect(() => {
-  //   dispatch(weatherForecast.request('London'));
-  // }, []);
 
   const handleChange = (e) => {
     setLocation(e.target.value);
