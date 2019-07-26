@@ -36,7 +36,7 @@ describe('app testing', () => {
  });
 
  it('fetching data when search clicked', async () => {
-  const {getByText, getByLabelText, container} = render(
+  const {getByText, getByLabelText} = render(
     <Provider store={store}><App/></Provider>,
   )
   axiosMock.get.mockResolvedValueOnce({
