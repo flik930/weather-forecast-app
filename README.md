@@ -3,7 +3,12 @@
 This app provides the coming 5 days weather forecast, and 3 hour weather info for each day.<br>
 
 ## Assumptions
-Assumming the timezone of datetime display will be base on the timezone of the city you are searching.
+1. Assumming the timezone of datetime display will be base on the timezone of the city you are searching.
+
+2. Assumming daily weather info is calculated from 3 hour weather info of each day, such as
+   - Min temp and max temp of the day
+   - Majority of condition of the day
+   - Mean of wind speed of the day
 
 ## To run the app in development mode
 `yarn start` Runs the app in the development mode.<br>

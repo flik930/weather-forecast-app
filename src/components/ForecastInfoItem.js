@@ -16,9 +16,10 @@ const ForecastInfoItem = (props) => {
   const { minTemp, maxTemp, wind, condition, conditionIconSrc, drillDown } = props;
   const minTempF = toFahrenheit(minTemp).toFixed(2);
   const maxTempF = toFahrenheit(maxTemp).toFixed(2);
-console.log(conditionIconSrc)
+
   const gridStyle = {
     cursor: drillDown ? 'auto' : 'pointer',
+    width: 216
   }
 
   return (
@@ -39,7 +40,7 @@ console.log(conditionIconSrc)
           <ListItem>
             <ListItemText primary={'Condition'} secondary={condition}/>
             <ListItemIcon>
-              <img style={{height: 50}} src={conditionIconSrc} />
+              <img style={{width: 40}} src={conditionIconSrc} />
             </ListItemIcon>
           </ListItem>
           <Divider component="li"/>
