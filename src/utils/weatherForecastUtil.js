@@ -42,7 +42,7 @@ const findMinTemp = (array) => {
 const findMaxTemp = (array) => {
   let maxTemp;
   array.forEach(item => {
-    if (!maxTemp || item.main.temp_max < maxTemp) {
+    if (!maxTemp || item.main.temp_max > maxTemp) {
       maxTemp = item.main.temp_max;
     }
   })
