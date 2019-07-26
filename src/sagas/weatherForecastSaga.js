@@ -4,8 +4,8 @@ import weatherForecast from '../actionCreators/weatherForecastActionCreator';
 
 function* fetchWeatherForecast(action) {
   try {
-     const response = yield call(getWeatherForecast, action.location);
-     yield put(weatherForecast.succeed(response.data));
+    const response = yield call(getWeatherForecast, action.location);
+    yield put(weatherForecast.succeed(response.data));
   } catch (e) {
     yield put(weatherForecast.failed(e.response.data));
   }

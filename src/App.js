@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import ForecastInfoItem from './components/ForecastInfoItem';
 import ForecastDrillDownModal from './components/ForecastDrillDownModal';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState('');
@@ -20,9 +20,9 @@ function App() {
   const city = useSelector(state => state.city);
   const error = useSelector(state => state.error);
 
-  useEffect(() => {
-    dispatch(weatherForecast.request('London'));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(weatherForecast.request('London'));
+  // }, []);
 
   const handleChange = (e) => {
     setLocation(e.target.value);
@@ -57,6 +57,7 @@ function App() {
         >
           <Grid item>
             <TextField
+              id="city"
               label="Please Enter a City"
               placeholder="London"
               margin="normal"
