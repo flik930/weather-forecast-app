@@ -26,7 +26,7 @@ const findMeanOfWindSpeed = (array) => {
   for (i = 0; i < array.length; i += 1) {
       total += array[i].wind.speed;
   }
-  return (total / array.length).toFixed(2);
+  return parseFloat((total / array.length).toFixed(2));
 }
 
 const findMinTemp = (array) => {
@@ -57,13 +57,13 @@ const getDailyForecast = (items) => {
   return {minTemp, maxTemp, condition, wind}
 }
 
-export const processForecastData = (data) => {
+export const processForecastData = (data, timenow) => {
   const tzOffset = data.city.timezone / 60;
   const dailyForecast = []
   //re-structure forcast data by day
   for(let i = 0; i <= 5; i++) {
-    let start = moment().utcOffset(tzOffset).startOf('day').add(i, 'days').valueOf() / 1000
-    let end = moment().utcOffset(tzOffset).startOf('day').add(i + 1, 'days').valueOf() / 1000
+    let start = moment(timenow).utcOffset(tzOffset).startOf('day').add(i, 'days').valueOf() / 1000
+    let end = moment(timenow).utcOffset(tzOffset).startOf('day').add(i + 1, 'days').valueOf() / 1000
     dailyForecast[i] = {
       dt: start,
       displayDate: moment(start * 1000).utcOffset(tzOffset).format('dddd D/M'),
