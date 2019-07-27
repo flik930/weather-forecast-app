@@ -39,7 +39,7 @@ const ForecastInfoItem = (props) => {
           <Divider component="li"/>
           <ListItem>
             <ListItemText primary={'Condition'} secondary={condition}/>
-            <ListItemIcon>
+            <ListItemIcon style={{minWidth: 40}}>
               <img style={{width: 40}} src={conditionIconSrc} />
             </ListItemIcon>
           </ListItem>
